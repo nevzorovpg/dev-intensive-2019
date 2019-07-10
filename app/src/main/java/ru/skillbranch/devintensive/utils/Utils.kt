@@ -10,77 +10,52 @@ object Utils {
     }
 
     fun transliteration(payload: String, divider: String = " "): String{
-        return payload.toCharArray().map{character -> if(character.isUpperCase()) transliteralCharacter(character.toLowerCase()).capitalize()
-        else transliteralCharacter(character)}.joinToString("").replace(" ", divider)
+
+        var transLiterationPayload: String = ""
+
+        for (char in payload) {
+            transLiterationPayload += when {
+                char.isUpperCase()-> transliteralCharConverter(char.toLowerCase()).capitalize()
+                else -> transliteralCharConverter(char.toLowerCase())}
+        }
+        return transLiterationPayload.replace(" ", divider)
     }
 
-    fun transliteralCharacter(character: Char): String = when(character){
-        'а'-> "a"
-
-        'б'-> "b"
-
-        'в'-> "v"
-
-        'г'-> "g"
-
-        'д'-> "d"
-
-        'е'-> "e"
-
-        'ё'-> "e"
-
-        'ж'-> "zh"
-
-        'з'-> "z"
-
-        'и'-> "i"
-
-        'й'-> "i"
-
-        'к'-> "k"
-
-        'л'-> "l"
-
-        'м'-> "m"
-
-        'н'-> "n"
-
-        'о'-> "o"
-
-        'п'-> "p"
-
-        'р'-> "r"
-
-        'с'-> "s"
-
-        'т'-> "t"
-
-        'у'-> "u"
-
-        'ф'-> "f"
-
-        'х'-> "h"
-
-        'ц'-> "c"
-
-        'ч'-> "ch"
-
-        'ш'-> "sh"
-
-        'щ'-> "sh'"
-
-        'ъ'-> ""
-
-        'ы'-> "i"
-
-        'ь'-> ""
-
-        'э'-> "e"
-
-        'ю'-> "yu"
-
-        'я'-> "ya"
-        else -> character.toString()
+    fun transliteralCharConverter(charPart: Char): String = when(charPart){
+        'а' -> "a"
+        'б' -> "b"
+        'в' -> "v"
+        'г' -> "g"
+        'д' -> "d"
+        'е' -> "e"
+        'ё' -> "e"
+        'ж' -> "zh"
+        'з' -> "z"
+        'и' -> "i"
+        'й' -> "i"
+        'к' -> "k"
+        'л' -> "l"
+        'м' -> "m"
+        'н' -> "n"
+        'о' -> "o"
+        'п' -> "p"
+        'р' -> "r"
+        'с' -> "s"
+        'т' -> "t"
+        'у' -> "u"
+        'ф' -> "f"
+        'х' -> "h"
+        'ц' -> "c"
+        'ч' -> "ch"
+        'ш' -> "sh"
+        'щ' -> "sh'"
+        'ъ' -> ""
+        'ы' -> "i"
+        'ь' -> ""
+        'э' -> "e"
+        'ю' -> "yu"
+        'я' -> "ya"
+        else -> charPart.toString()
     }
 
 
