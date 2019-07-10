@@ -15,8 +15,8 @@ object Utils {
 
         for (char in payload) {
             transLiterationPayload += when {
-                char.isUpperCase()-> transliteralCharConverter(char.toLowerCase()).capitalize()
-                else -> transliteralCharConverter(char.toLowerCase())}
+                char.isUpperCase()  -> transliteralCharConverter(char.toLowerCase()).capitalize()
+                else                -> transliteralCharConverter(char.toLowerCase())}
         }
         return transLiterationPayload.replace(" ", divider)
     }
